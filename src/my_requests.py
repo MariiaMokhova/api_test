@@ -1,27 +1,31 @@
 import requests
-from data.urls import base_url
+from data.urls import Urls
+
+
 class MyRequests:
     @staticmethod
     def get(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        response = MyRequests._send(url, data, headers, cookies, method="GET")
+        response = MyRequests._send(url, data, headers, cookies, "GET")
         return response
+
     @staticmethod
     def post(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        response = MyRequests._send(url, data, headers, cookies, method="POST")
+        response = MyRequests._send(url, data, headers, cookies, "POST")
         return response
 
     @staticmethod
     def put(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        response = MyRequests._send(url, data, headers, cookies, method="PUT")
+        response = MyRequests._send(url, data, headers, cookies, "PUT")
         return response
 
     @staticmethod
     def delete(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        response = MyRequests._send(url, data, headers, cookies, method="DELETE")
+        response = MyRequests._send(url, data, headers, cookies, "DELETE")
         return response
+
     @staticmethod
     def _send(url: str, data: dict, headers: dict, cookies: dict, method: str):
-        url = f"""{base_url}{url}"""
+        url = f"""{Urls.base_url}{url}"""
 
         if headers is None:
             headers = {}
